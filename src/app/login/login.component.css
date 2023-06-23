@@ -9,7 +9,15 @@
   }
   
   .formLogin {
-    display: grid;
+    padding: 15px 15px;
+    background-color: rgb(101, 101, 139);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     place-items: center;
+    display: grid;
+    border-radius: 5% ;
   }
+
 
