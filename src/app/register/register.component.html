@@ -1,19 +1,19 @@
 <body>
   <div class="formRegister">
     <h1>Sign up HomeBanking</h1>
-    <form class="example-form" (ngSubmit)="register()">
+    <form class="example-form" [formGroup]="registerForm">
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input
           matInput
-          placeholder="Email"
+          placeholder="email@gmail.com"
           type="email"
           class="custom-input"
-          [(ngModel)]="email"
-          id="email"
-          name="email"
-          required
+          formControlName="email"
         />
+        <mat-error>
+          Email is <strong>required</strong>
+        </mat-error>
         <mat-icon matSuffix>alternate_email</mat-icon>
       </mat-form-field>
       <mat-form-field class="example-full-width">
@@ -23,11 +23,11 @@
           placeholder="Username"
           type="text"
           class="custom-input"
-          [(ngModel)]="username"
-          id="username"
-          name="username"
-          required
+          formControlName="username"
         />
+        <mat-error>
+          Username is <strong>required</strong> and must be between 4 and 10 characters.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -37,11 +37,12 @@
           placeholder="Password"
           type="password"
           class="custom-input"
-          [(ngModel)]="password"
-          id="password"
-          name="password"
-          required
+          formControlName="password"
         />
+        <mat-error>
+          Password is <strong>required</strong> and must be at least 8 characters.
+        </mat-error>
+        
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -51,10 +52,7 @@
           placeholder="Confirm password"
           type="password"
           class="custom-input"
-          [(ngModel)]="confirmPassword"
-          id="confirmPassword"
-          name="confirmPassword"
-          required
+          formControlName="confirmPassword"
         />
       </mat-form-field>
   
@@ -66,23 +64,30 @@
           matInput
           placeholder="Phone number"
           class="custom-input"
-          [(ngModel)]="phoneNumber"
-          id="phoneNumber"
-          name="phoneNumber"
-          required
+          formControlName="phoneNumber"
         />
+        <mat-error>
+          Phone number is <strong>required</strong>
+        </mat-error>
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width custom-input">
+      <mat-form-field class="example-full-width">
         <mat-label>Birth date</mat-label>
-        <input matInput placeholder="Birth date" type="date" [(ngModel)]="birthDate" id="birthDate" name="birthDate" required>
-        <mat-icon matSuffix>date_range</mat-icon>
+        <input
+          matInput
+          placeholder="Birth date"
+          type="date"
+          class="custom-input"
+          formControlName="birthDate"
+        />
+        <mat-error>
+          Birth date is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
-      
 
       <div class="button-container">
-        <button mat-fab extended color="basic" type="submit">
+        <button mat-fab extended color="basic" type="submit" (click)="register()">
           <mat-icon>login</mat-icon>
           Sign Up
         </button>
@@ -97,5 +102,12 @@
     >
       <mat-icon>arrow_back_ios</mat-icon>
     </button>
+    <mat-error style="margin-top: 20px;" *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </mat-error>
+
+    <mat-error style="margin-top: 20px;" *ngIf="passwordErrorMessage" class="error-message">
+      {{ passwordErrorMessage }}
+    </mat-error>
   </div>
 </body>

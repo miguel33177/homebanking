@@ -1,26 +1,38 @@
 <body>
   <div class="formLogin">
     <h1>Login HomeBanking</h1>
-    <form class="example-form" (ngSubmit)="login()">
+    <form class="example-form" [formGroup]="loginForm">
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Username" class="custom-input" [(ngModel)]="username" id="username" name="username" required/>
+        <input matInput placeholder="Username" class="custom-input" formControlName="username"/>
+        <mat-error>
+          Username is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" class="custom-input" [(ngModel)]="password" id="password" name="password" required/>
+        <input matInput placeholder="Password" type="password" class="custom-input" formControlName="password"/>
+        <mat-error>
+          Password is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
    
-
     <div class="button-container">
-      <button mat-fab extended color="basic" type="submit">
+      <button mat-fab extended color="basic" type="submit" (click)="login()">
         <mat-icon>login</mat-icon>
         Login
       </button>
     </div> 
   </form>
   <p style="padding-top: 25px;">You don't have an account? <a routerLink="/register" class="signup-link">Sign up</a></p>
+  <mat-error style="margin-top: 20px;" *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </mat-error>
+
+  <mat-error style="margin-top: 20px;" *ngIf="loginFailed" class="error-message">
+    {{ loginFailed }}
+  </mat-error>
   </div>
 </body>
 

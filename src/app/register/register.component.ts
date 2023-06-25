@@ -1,35 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+function passwordMatch(password: string, confirmPassword: string): boolean {
+  return password === confirmPassword;
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
-  constructor(private router: Router, private _location: Location) {}
-  email!: string;
-  username!: string;
-  password!: string;
-  confirmPassword!: string;
-  phoneNumber!: string;
-  birthDate!: string;
 
+export class RegisterComponent implements OnInit {
+  
+  registerForm!:FormGroup;
+  errorMessage: string = ''; 
+  passwordErrorMessage: string = ''; 
+  constructor(private router: Router, private _location: Location, private formBuilder: FormBuilder) {}
+
+
+  ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      username: ['', Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(8)])], 
+      confirmPassword: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      birthDate: ['', Validators.required]   
+    });
+  }
   register() {
-    console.log(this.username);
-    if (this.email && this.username && this.password && this.confirmPassword && this.phoneNumber && this.birthDate) {
-      if (this.password === this.confirmPassword) {
+    const password = this.registerForm.get('password')?.value;
+    const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+
+     if (this.registerForm.valid) {
+      if (passwordMatch(password, confirmPassword)) {
         alert('Registration successful!');
         this.router.navigate(['/main']);
       } else {
-        alert('Passwords do not match!');
+        this.passwordErrorMessage = 'Passwords does not match!';
       }
     } else {
-      alert('All fields are required!');
+      this.errorMessage = 'Please fill in all required fields!';
     }
   }
+  
   toBack(){
       this._location.back();
   }
+
+  
 }
