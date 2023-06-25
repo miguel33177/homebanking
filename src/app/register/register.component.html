@@ -1,0 +1,101 @@
+<body>
+  <div class="formRegister">
+    <h1>Sign up HomeBanking</h1>
+    <form class="example-form" (ngSubmit)="register()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Email"
+          type="email"
+          class="custom-input"
+          [(ngModel)]="email"
+          id="email"
+          name="email"
+          required
+        />
+        <mat-icon matSuffix>alternate_email</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          placeholder="Username"
+          type="text"
+          class="custom-input"
+          [(ngModel)]="username"
+          id="username"
+          name="username"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="Password"
+          type="password"
+          class="custom-input"
+          [(ngModel)]="password"
+          id="password"
+          name="password"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Confirm password</mat-label>
+        <input
+          matInput
+          placeholder="Confirm password"
+          type="password"
+          class="custom-input"
+          [(ngModel)]="confirmPassword"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+        />
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Phone number</mat-label>
+        <span matPrefix>+351 &nbsp;</span>
+        <input
+          type="tel"
+          matInput
+          placeholder="Phone number"
+          class="custom-input"
+          [(ngModel)]="phoneNumber"
+          id="phoneNumber"
+          name="phoneNumber"
+          required
+        />
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width custom-input">
+        <mat-label>Birth date</mat-label>
+        <input matInput placeholder="Birth date" type="date" [(ngModel)]="birthDate" id="birthDate" name="birthDate" required>
+        <mat-icon matSuffix>date_range</mat-icon>
+      </mat-form-field>
+      
+
+      <div class="button-container">
+        <button mat-fab extended color="basic" type="submit">
+          <mat-icon>login</mat-icon>
+          Sign Up
+        </button>
+      </div>
+    </form>
+    <button
+      style="right: 40%; margin-top: -48px"
+      mat-icon-button
+      matTooltip="Basic"
+      aria-label="Example icon-button with a heart icon"
+      (click)="toBack()"
+    >
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+  </div>
+</body>

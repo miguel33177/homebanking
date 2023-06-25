@@ -8,14 +8,14 @@ body {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  
 }
-
 
 .example-full-width {
   width: 100%;
 }
 
-.formLogin {
+.formRegister {
   padding: 15px;
   background-color: rgb(255, 255, 255);
   position: absolute;
@@ -28,7 +28,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .formLogin {
+  .formRegister {
     padding: 15px;
     background-color: rgb(255, 255, 255);
     position: fixed;
@@ -45,8 +45,17 @@ body {
   margin-top: 10px;
   text-align: center;
 }
-.signup-link {
-  color: black; 
-  font-weight: bold; 
-  text-decoration:underline;
+
+.custom-input {
+ 
 }
+
+.custom-input input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  color: #000000;
+}
+

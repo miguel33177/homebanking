@@ -12,11 +12,15 @@ export class LoginComponent {
   password!: string;
 
   login() {
-    if (this.username == 'ola' && this.password == 'ola') {
-      alert('Login bem-sucedido!');
+    if (!this.username || !this.password) { //caso um dos inputs esteja vazio
+      alert('Required fields!');
+      return; // Sair do método login()
+    } else if (this.username === 'ola' && this.password === 'ola') {
+      alert('Login successful!');
       this.router.navigate(['/main']); // Redirecionar para a rota '/main'
     } else {
-      alert('Nome de usuário ou senha inválidos!');
+      alert('Invalid username or password!');
     }
   }
+  
 }
