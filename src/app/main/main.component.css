@@ -1,16 +1,76 @@
-body {
-    background-image: url(src/assets/background-homebanking.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+  
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
   }
-
-.messageWelcome{
+  
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .addFunds {
     padding: 15px;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    top: 30%;
-    right: 0;
+    top: 33%;
+    right: 7%;
     transform: translate(-50%, -50%);
+    place-items: center;
     display: grid;
     border-radius: 5%;
-}
+  }
+  
+  @media screen and (max-width: 768px) {
+    .addFunds {
+      padding: 15px;
+      background-color: rgb(255, 255, 255);
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      place-items: center;
+      display: grid;
+      border-radius: 5%;
+      width: auto;
+    }
+  }
+  .button-container {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .messageWelcome{
+    color: white;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+  }
+
+  .withdrawFunds{
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 60%;
+    right: 7%;
+    transform: translate(-50%, -50%);
+    place-items: center;
+    display: grid;
+    border-radius: 5%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .withdrawFunds {
+      padding: 15px;
+      background-color: rgb(255, 255, 255);
+      position: fixed;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      place-items: center;
+      display: grid;
+      border-radius: 5%;
+      width: auto;
+    }
+  }

@@ -1,8 +1,75 @@
 <body>
-  <app-navbar [username]="username"></app-navbar>
   <div class="messageWelcome">
     <h1>Welcome to your bank account {{ username }} !</h1>
-    <h1>Amount : </h1>
+    <h2>Balance : {{ balance | currency:'EUR' }}</h2>
   </div>
+    <div class="addFunds">
+      <h1>Add Funds</h1>
+      <form class="example-form" [formGroup]="depositForm">
+        <mat-form-field class="example-full-width">
+          <mat-label>Amount</mat-label>
+          <input
+            matInput
+            placeholder="amount"
+            class="custom-input"
+            formControlName="amount"/>
+        </mat-form-field>
+  
+        <div class="button-container">
+          <button
+            mat-fab
+            extended
+            color="basic"
+            type="submit"
+            (click)="depositFunds()">
+            <mat-icon>add</mat-icon>
+            Add funds
+          </button>
+        </div>
+      </form>
+      <mat-error style="margin-top: 20px; margin-left: 15px;" class="error-message" *ngIf="errorMessageAdd">{{ errorMessageAdd }}</mat-error>
+          <p style="margin-top: 20px; margin-left: 15px;  color: green;
+          font-weight: bold;" class="success-message" *ngIf="successMessageAdd">{{ successMessageAdd }}</p>
+  </div>
+
+  <div class="withdrawFunds">
+    <h1>Withdraw Funds</h1>
+    <form class="example-form" [formGroup]="withdrawForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          placeholder="amount"
+          class="custom-input"
+          formControlName="amount"/>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button
+          mat-fab
+          extended
+          color="basic"
+          type="submit"
+          (click)="withdrawFunds()">
+          <mat-icon>sub</mat-icon>
+          Withdraw
+        </button>
+      </div>
+    </form>
+    <mat-error style="margin-top: 20px; margin-left: 15px;" class="error-message" *ngIf="errorMessageWithdraw">{{ errorMessageWithdraw }}</mat-error>
+        <p style="margin-top: 20px; margin-left: 15px;  color: green;
+        font-weight: bold;" class="success-message" *ngIf="successMessageWithdraw">{{ successMessageWithdraw }}</p>
+</div>
+  <table style="color: white;">
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <tr *ngFor="let transaction of transactions">
+      <td>Type: {{ transaction.type }}</td>
+      <td>Amount: {{ transaction.amount }}</td>
+      <td>Date: {{ transaction.date }}</td>
+    </tr>
+  </table>
 </body>
-<router-outlet></router-outlet>
+  
+

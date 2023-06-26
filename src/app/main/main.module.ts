@@ -2,24 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
-import { AddComponent } from '../features/add/add.component';
-import { TransactionsComponent } from '../features/transactions/transactions.component';
-import { WithdrawComponent } from '../features/withdraw/withdraw.component';
-import { NavbarComponent } from '../features/navbar/navbar.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { MainComponent } from './main.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    AddComponent,
-    TransactionsComponent,
-    WithdrawComponent,MainComponent, NavbarComponent
+   MainComponent
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModule { }
