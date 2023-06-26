@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 
 @Component({
   selector: 'app-main',
@@ -49,21 +52,24 @@ export class MainComponent implements OnInit {
     });
   }
   addTransaction(type: string, amount: number, date: Date) {
+
     const transaction = {
       type: type,
       amount: amount,
-      date: date.getUTCDate(),
+      date: date.getDate().toString().padStart(2, '0') + '-' + (date.getMonth() + 1).toString().padStart(2, '0') + '-' + date.getFullYear() + " " + date.getHours().toString().padStart(2, '0') + ":" + date.getMinutes().toString().padStart(2, '0')+":"+date.getSeconds().toString().padStart(2, '0'),
     };
 
     this.transactions.push(transaction);
+    this.dataSource.data = this.transactions; // Upgrade dataSource
+
   }
-  
+
   depositFunds() {
     if (this.depositForm.valid) {
       const amount = parseInt(this.depositForm.value.amount, 10);
       let date = new Date();
 
-      this.addTransaction('deposit', amount, date);
+      this.addTransaction('Deposit', amount, date);
       this.balance += amount;
 
       alert('Funds added successfully!');
@@ -77,7 +83,7 @@ export class MainComponent implements OnInit {
       const amount = parseInt(this.withdrawForm.value.amount, 10);
       let date = new Date();
 
-      this.addTransaction('withdraw', amount, date);
+      this.addTransaction('Withdraw', -amount, date);
       this.balance -= amount;
 
       alert('Funds withdraw successfully!');
@@ -85,4 +91,6 @@ export class MainComponent implements OnInit {
       alert('Please enter a valid amount.');
     }
   }
+  displayedColumns: string[] = ['type', 'amount', 'date'];
+  dataSource = new MatTableDataSource(this.transactions);
 }

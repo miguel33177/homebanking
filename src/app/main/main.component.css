@@ -1,76 +1,100 @@
-  
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  
-  .example-full-width {
-    width: 100%;
-  }
-  
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.addFunds {
+  padding: 15px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 33%;
+  right: 7%;
+  transform: translate(-50%, -50%);
+  place-items: center;
+  display: grid;
+  border-radius: 5%;
+}
+
+@media screen and (max-width: 768px) {
   .addFunds {
     padding: 15px;
     background-color: rgb(255, 255, 255);
-    position: absolute;
-    top: 33%;
-    right: 7%;
+    position: fixed;
+    top: 35%;
+    left: 50%;
     transform: translate(-50%, -50%);
     place-items: center;
     display: grid;
     border-radius: 5%;
+    width: auto;
   }
-  
-  @media screen and (max-width: 768px) {
-    .addFunds {
-      padding: 15px;
-      background-color: rgb(255, 255, 255);
-      position: fixed;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      place-items: center;
-      display: grid;
-      border-radius: 5%;
-      width: auto;
-    }
-  }
-  .button-container {
-    margin-top: 10px;
-    text-align: center;
-  }
+}
+.button-container {
+  margin-top: 10px;
+  text-align: center;
+}
 
-  .messageWelcome{
-    color: white;
-    position: absolute;
-    top: 10%;
-    right: 10%;
-  }
+.messageWelcome {
+  color: white;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
 
-  .withdrawFunds{
+.withdrawFunds {
+  padding: 15px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 60%;
+  right: 7%;
+  transform: translate(-50%, -50%);
+  place-items: center;
+  display: grid;
+  border-radius: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .withdrawFunds {
     padding: 15px;
     background-color: rgb(255, 255, 255);
-    position: absolute;
+    position: fixed;
     top: 60%;
-    right: 7%;
+    left: 50%;
     transform: translate(-50%, -50%);
     place-items: center;
     display: grid;
     border-radius: 5%;
+    width: auto;
   }
+}
+.mat-mdc-table  {
+background-color:rgb(255, 255, 255);
+}
 
-  @media screen and (max-width: 768px) {
-    .withdrawFunds {
-      padding: 15px;
-      background-color: rgb(255, 255, 255);
-      position: fixed;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      place-items: center;
-      display: grid;
-      border-radius: 5%;
-      width: auto;
-    }
-  }
+.mdc-data-table__table {
+  min-width: 50%; 
+  position: absolute;
+  top: 22%;
+  left: 15%;
+}
+
+@media screen and (max-width: 768px) {
+.mdc-data-table__table {
+  padding: 15px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  place-items: center;
+  display: grid;
+  border-radius: 5%;
+  width: auto;
+}
+}
+
