@@ -7,10 +7,17 @@ import { TransactionsComponent } from '../features/transactions/transactions.com
 
 
 const routes: Routes = [
-  {path: '', component:MainComponent},
-  {path: 'addFunds', component:AddComponent},
-  {path:'withdrawFunds', component:WithdrawComponent},
-  {path:'transactions', component:TransactionsComponent}
+  { path: '', component: MainComponent },
+  { 
+    path: '',
+    component: MainComponent,
+    children: [
+      { path: 'addFunds', component: AddComponent },
+      { path: 'withdrawFunds', component: WithdrawComponent },
+      { path: 'transactions', component: TransactionsComponent },
+    ]
+  },
+  // outras rotas...
 ];
 
 @NgModule({

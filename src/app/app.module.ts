@@ -5,14 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main.component';
-import { RegisterComponent } from './register/register.component';
-import { AddComponent } from './features/add/add.component';
-import { WithdrawComponent } from './features/withdraw/withdraw.component';
-import { TransactionsComponent } from './features/transactions/transactions.component';
+import { NavbarComponent } from './features/navbar/navbar.component';
 
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, AddComponent, WithdrawComponent, TransactionsComponent
+  declarations: [AppComponent
   ],
   imports: [
     BrowserModule,

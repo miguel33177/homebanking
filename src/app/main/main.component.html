@@ -1,13 +1,8 @@
 <body>
-  <header>
-    <div class="topnav">
-      <a routerLink="transactions" routerLinkActive="active">Transactions</a>
-      <a routerLink="addFunds" routerLinkActive="active">Add funds</a>
-      <a routerLink="withdrawFunds" routerLinkActive="active">Withdraw funds</a>
-    </div>
-  </header>
+  <app-navbar [username]="username"></app-navbar>
   <div class="messageWelcome">
     <h1>Welcome to your bank account {{ username }} !</h1>
     <h1>Amount : </h1>
   </div>
 </body>
+<router-outlet></router-outlet>
