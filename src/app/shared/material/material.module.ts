@@ -7,6 +7,9 @@ import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
 
 @NgModule({
   declarations: [],
@@ -17,8 +20,8 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     MatButtonModule,
     MatIconModule,
-    MatTableModule
-
+    MatTableModule,
+    MatPaginatorModule,
    
   ],
   exports: [
@@ -27,7 +30,10 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     MatButtonModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+
+   
   
   ]
 })

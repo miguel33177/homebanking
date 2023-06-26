@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-
-
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
+  
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
   username: string = '';
   depositForm!: FormGroup;
   withdrawForm!: FormGroup;
@@ -21,10 +21,13 @@ export class MainComponent implements OnInit {
   transactions: any[] = [];
   balance: number = 0;
 
+  
+
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {}
+
 
   ngOnInit(): void {
     this.depositForm = this.formBuilder.group({
@@ -51,17 +54,27 @@ export class MainComponent implements OnInit {
       this.username = params['username'];
     });
   }
-  addTransaction(type: string, amount: number, date: Date) {
 
+  addTransaction(type: string, amount: number, date: Date) {
     const transaction = {
       type: type,
       amount: amount,
-      date: date.getDate().toString().padStart(2, '0') + '-' + (date.getMonth() + 1).toString().padStart(2, '0') + '-' + date.getFullYear() + " " + date.getHours().toString().padStart(2, '0') + ":" + date.getMinutes().toString().padStart(2, '0')+":"+date.getSeconds().toString().padStart(2, '0'),
+      date:
+        date.getDate().toString().padStart(2, '0') +
+        '-' +
+        (date.getMonth() + 1).toString().padStart(2, '0') +
+        '-' +
+        date.getFullYear() +
+        ' ' +
+        date.getHours().toString().padStart(2, '0') +
+        ':' +
+        date.getMinutes().toString().padStart(2, '0') +
+        ':' +
+        date.getSeconds().toString().padStart(2, '0'),
     };
 
     this.transactions.push(transaction);
-    this.dataSource.data = this.transactions; // Upgrade dataSource
-
+    this.dataSource.data = this.transactions;
   }
 
   depositFunds() {
@@ -91,6 +104,14 @@ export class MainComponent implements OnInit {
       alert('Please enter a valid amount.');
     }
   }
+
   displayedColumns: string[] = ['type', 'amount', 'date'];
   dataSource = new MatTableDataSource(this.transactions);
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 }

@@ -25,7 +25,7 @@
     padding: 15px;
     background-color: rgb(255, 255, 255);
     position: fixed;
-    top: 35%;
+    top: 27%;
     left: 50%;
     transform: translate(-50%, -50%);
     place-items: center;
@@ -38,12 +38,19 @@
   margin-top: 10px;
   text-align: center;
 }
-
 .messageWelcome {
   color: white;
   position: absolute;
   top: 10%;
   right: 10%;
+}
+@media screen and (max-width: 768px) {
+  .messageWelcome {
+    color: white;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+  }
 }
 
 .withdrawFunds {
@@ -63,7 +70,7 @@
     padding: 15px;
     background-color: rgb(255, 255, 255);
     position: fixed;
-    top: 60%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
     place-items: center;
@@ -85,16 +92,36 @@ background-color:rgb(255, 255, 255);
 
 @media screen and (max-width: 768px) {
 .mdc-data-table__table {
-  padding: 15px;
   background-color: rgb(255, 255, 255);
   position: fixed;
-  top: 85%;
-  left: 50%;
+  top: 77%;
+  left: 51%;
   transform: translate(-50%, -50%);
   place-items: center;
   display: grid;
-  border-radius: 5%;
   width: auto;
 }
 }
+.mat-mdc-paginator {
+  background: #ffffff;
+  position: absolute;
+  top: 57%;
+  left: 28%;
+  color: rgba(0,0,0,.87);
+}
+@media screen and (max-width: 768px) {
+  .mat-mdc-paginator {
+    background: #ffffff;
+    position: absolute;
+    top: 92%;
+    left: 18%;
+    color: rgba(0,0,0,.87);
 
+  }
+}
+
+.signup-link {
+  color: #ffffff; 
+  font-weight: bold; 
+  text-decoration:underline;
+}
