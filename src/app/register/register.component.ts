@@ -50,6 +50,4 @@ export class RegisterComponent implements OnInit {
   toBack(){
       this._location.back();
   }
-
-  
 }
