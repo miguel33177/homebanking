@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+     // Initialize the login form with required fields and validators
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -22,16 +23,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+      // Check if the form is valid
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
       
-
+      // Check if the username and password match the expected values
       if (username === 'bruno' && password === 'password') {
         alert('Login successful!');
+        // Create a NavigationExtras object to pass additional parameters via query parameters
         const navigationExtras: NavigationExtras = {
           queryParams: { username: username } 
         };
+        // Navigate to the '/main' route with the provided query parameters
         this.router.navigate(['/main'], navigationExtras);
        
       } else {

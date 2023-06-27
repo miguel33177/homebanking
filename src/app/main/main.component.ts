@@ -1,35 +1,28 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
-  
 })
 export class MainComponent implements OnInit, AfterViewInit {
   username: string = '';
   depositForm!: FormGroup;
   withdrawForm!: FormGroup;
-  errorMessageAdd: string = '';
-  successMessageAdd: string = '';
-  errorMessageWithdraw: string = '';
-  successMessageWithdraw: string = '';
   transactions: any[] = [];
   balance: number = 0;
-
-  
 
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {}
 
-
   ngOnInit(): void {
+    // Initialize deposit and withdraw forms with validation
     this.depositForm = this.formBuilder.group({
       amount: [
         '',
@@ -50,12 +43,14 @@ export class MainComponent implements OnInit, AfterViewInit {
       ],
     });
 
+    // Retrieve username from query params
     this.route.queryParams.subscribe((params) => {
       this.username = params['username'];
     });
   }
 
   addTransaction(type: string, amount: number, date: Date) {
+    // Create a transaction object
     const transaction = {
       type: type,
       amount: amount,
@@ -73,6 +68,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         date.getSeconds().toString().padStart(2, '0'),
     };
 
+    // Add transaction to the transactions array
     this.transactions.push(transaction);
     this.dataSource.data = this.transactions;
   }
@@ -82,6 +78,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       const amount = parseInt(this.depositForm.value.amount, 10);
       let date = new Date();
 
+      // Add deposit transaction and update balance
       this.addTransaction('Deposit', amount, date);
       this.balance += amount;
 
@@ -93,13 +90,17 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   withdrawFunds() {
     if (this.withdrawForm.valid) {
-      const amount = parseInt(this.withdrawForm.value.amount, 10);
-      let date = new Date();
+      if (this.balance != 0) {
+        const amount = parseInt(this.withdrawForm.value.amount, 10);
+        let date = new Date();
 
-      this.addTransaction('Withdraw', -amount, date);
-      this.balance -= amount;
-
-      alert('Funds withdraw successfully!');
+        // Add withdraw transaction and update balance
+        this.addTransaction('Withdraw', -amount, date);
+        this.balance -= amount;
+        alert('Funds withdraw successfully!');
+      }else{
+        alert("No funds available!")
+      }
     } else {
       alert('Please enter a valid amount.');
     }
@@ -112,6 +113,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   paginator!: MatPaginator;
 
   ngAfterViewInit() {
+    // Set the paginator for the table data source
     this.dataSource.paginator = this.paginator;
   }
 }

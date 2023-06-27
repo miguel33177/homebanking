@@ -1,7 +1,10 @@
 <body>
+  <!-- Registration form -->
   <div class="formRegister">
     <h1>Sign up HomeBanking</h1>
+    <!-- Form element with formGroup directive bound to registerForm property -->
     <form class="example-form" [formGroup]="registerForm">
+      <!-- Email input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input
@@ -11,11 +14,11 @@
           class="custom-input"
           formControlName="email"
         />
-        <mat-error>
-          Email is <strong>required</strong>
-        </mat-error>
+        <mat-error> Email is <strong>required</strong> </mat-error>
         <mat-icon matSuffix>alternate_email</mat-icon>
       </mat-form-field>
+
+      <!-- Username input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input
@@ -26,10 +29,12 @@
           formControlName="username"
         />
         <mat-error>
-          Username is <strong>required</strong> and must be between 4 and 10 characters.
+          Username is <strong>required</strong> and must be between 4 and 10
+          characters.
         </mat-error>
       </mat-form-field>
 
+      <!-- Password input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
         <input
@@ -40,11 +45,12 @@
           formControlName="password"
         />
         <mat-error>
-          Password is <strong>required</strong> and must be at least 8 characters.
+          Password is <strong>required</strong> and must be at least 8
+          characters.
         </mat-error>
-        
       </mat-form-field>
 
+      <!-- Confirm password input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Confirm password</mat-label>
         <input
@@ -55,7 +61,8 @@
           formControlName="confirmPassword"
         />
       </mat-form-field>
-  
+
+      <!-- Phone number input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Phone number</mat-label>
         <span matPrefix>+351 &nbsp;</span>
@@ -66,12 +73,11 @@
           class="custom-input"
           formControlName="phoneNumber"
         />
-        <mat-error>
-          Phone number is <strong>required</strong>
-        </mat-error>
+        <mat-error> Phone number is <strong>required</strong> </mat-error>
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
 
+      <!-- Birth date input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Birth date</mat-label>
         <input
@@ -81,18 +87,26 @@
           class="custom-input"
           formControlName="birthDate"
         />
-        <mat-error>
-          Birth date is <strong>required</strong>
-        </mat-error>
+        <mat-error> Birth date is <strong>required</strong> </mat-error>
       </mat-form-field>
 
+      <!-- Button container -->
       <div class="button-container">
-        <button mat-fab extended color="basic" type="submit" (click)="register()">
+        <!-- Submit button -->
+        <button
+          mat-fab
+          extended
+          color="basic"
+          type="submit"
+          (click)="register()"
+        >
           <mat-icon>login</mat-icon>
           Sign Up
         </button>
       </div>
     </form>
+
+    <!-- Back button -->
     <button
       style="right: 40%; margin-top: -48px"
       mat-icon-button
@@ -102,11 +116,20 @@
     >
       <mat-icon>arrow_back_ios</mat-icon>
     </button>
-    <mat-error style="margin-top: 20px;" *ngIf="errorMessage" class="error-message">
+
+    <!-- Error messages -->
+    <mat-error
+      style="margin-top: 20px"
+      *ngIf="errorMessage"
+      class="error-message"
+    >
       {{ errorMessage }}
     </mat-error>
-
-    <mat-error style="margin-top: 20px;" *ngIf="passwordErrorMessage" class="error-message">
+    <mat-error
+      style="margin-top: 20px"
+      *ngIf="passwordErrorMessage"
+      class="error-message"
+    >
       {{ passwordErrorMessage }}
     </mat-error>
   </div>

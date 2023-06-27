@@ -1,37 +1,45 @@
 <body>
   <div class="messageWelcome">
     <h1>Welcome to your bank account {{ username }} !</h1>
-    <h2>Balance : {{ balance | currency:'EUR' }} <a class="signup-link" href="/login">Logout</a></h2>
+    <!-- Check balance -->
+    <h2>
+      Balance : {{ balance | currency : "EUR" }}
+      <a class="signup-link" href="/login">Logout</a>
+    </h2>
   </div>
-    <div class="addFunds">
-      <h1>Add Funds</h1>
-      <form class="example-form" [formGroup]="depositForm">
-        <mat-form-field class="example-full-width">
-          <mat-label>Amount</mat-label>
-          <input
-            matInput
-            placeholder="Amount"
-            class="custom-input"
-            formControlName="amount"/>
-        </mat-form-field>
-  
-        <div class="button-container">
-          <button
-            mat-fab
-            extended
-            color="basic"
-            type="submit"
-            (click)="depositFunds()">
-            <mat-icon>add</mat-icon>
-            Add funds
-          </button>
-        </div>
-      </form>
-      <mat-error style="margin-top: 20px; margin-left: 15px;" class="error-message" *ngIf="errorMessageAdd">{{ errorMessageAdd }}</mat-error>
-          <p style="margin-top: 20px; margin-left: 15px;  color: green;
-          font-weight: bold;" class="success-message" *ngIf="successMessageAdd">{{ successMessageAdd }}</p>
-  </div>
+  <!-- Add Funds section -->
+  <div class="addFunds">
+    <h1>Add Funds</h1>
 
+    <!-- Amount input field -->
+    <form class="example-form" [formGroup]="depositForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          placeholder="Amount"
+          class="custom-input"
+          formControlName="amount"
+        />
+      </mat-form-field>
+
+      <!-- Button Add funds -->
+      <div class="button-container">
+        <button
+          mat-fab
+          extended
+          color="basic"
+          type="submit"
+          (click)="depositFunds()"
+        >
+          <mat-icon>add</mat-icon>
+          Add funds
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Withdraw Funds section -->
   <div class="withdrawFunds">
     <h1>Withdraw Funds</h1>
     <form class="example-form" [formGroup]="withdrawForm">
@@ -41,7 +49,8 @@
           matInput
           placeholder="Amount"
           class="custom-input"
-          formControlName="amount"/>
+          formControlName="amount"
+        />
       </mat-form-field>
 
       <div class="button-container">
@@ -50,45 +59,51 @@
           extended
           color="basic"
           type="submit"
-          (click)="withdrawFunds()">
+          (click)="withdrawFunds()"
+        >
           <mat-icon> attach_money</mat-icon>
           Withdraw
         </button>
       </div>
     </form>
-    <mat-error style="margin-top: 20px; margin-left: 15px;" class="error-message" *ngIf="errorMessageWithdraw">{{ errorMessageWithdraw }}</mat-error>
-        <p style="margin-top: 20px; margin-left: 15px;  color: green;
-        font-weight: bold;" class="success-message" *ngIf="successMessageWithdraw">{{ successMessageWithdraw }}</p>
-</div>
-<div class="mat-elevation-z8">
- <table mat-table [dataSource]="dataSource" >
-  <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef>Type</th>
-    <td mat-cell *matCellDef="let transaction" [ngStyle]="{'color': transaction.type === 'Deposit' ? 'green' : 'red'}">
-     <b>{{ transaction.type }}</b> 
-    </td>
-  </ng-container>
-  
-  
-  
-  <ng-container matColumnDef="amount">
-    <th mat-header-cell *matHeaderCellDef>Amount</th>
-    <td mat-cell *matCellDef="let transaction">{{ transaction.amount | currency:'EUR' }}</td>
-  </ng-container>
-  
-  <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef>Date</th>
-    <td mat-cell *matCellDef="let transaction">{{ transaction.date }}</td>
-  </ng-container>
+  </div>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<mat-paginator [pageSizeOptions]="[3]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
-  </mat-paginator>
-</div>
+  <!-- Transaction History table -->
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td
+          mat-cell
+          *matCellDef="let transaction"
+          [ngStyle]="{
+            color: transaction.type === 'Deposit' ? 'green' : 'red'     
+          }"
+        >
+          <b>{{ transaction.type }}</b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let transaction">
+          {{ transaction.amount | currency : "EUR" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let transaction">{{ transaction.date }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[3]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
 </body>
-  
-

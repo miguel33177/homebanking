@@ -1,7 +1,10 @@
 <body>
   <div class="formLogin">
     <h1>Login HomeBanking</h1>
+    <!-- Login form -->
     <form class="example-form" [formGroup]="loginForm">
+
+       <!-- Username input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input
@@ -13,6 +16,7 @@
         <mat-error> Username is <strong>required</strong> </mat-error>
       </mat-form-field>
 
+      <!-- Password input field -->
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
         <input
@@ -25,6 +29,7 @@
         <mat-error> Password is <strong>required</strong> </mat-error>
       </mat-form-field>
 
+      <!-- Login button -->
       <div class="button-container">
         <button mat-fab extended color="basic" type="submit" (click)="login()">
           <mat-icon>login</mat-icon>
@@ -32,10 +37,14 @@
         </button>
       </div>
     </form>
+
+    <!-- Sign up link -->
     <p style="padding-top: 25px">
       You don't have an account?
       <a routerLink="/register" class="signup-link">Sign up</a>
     </p>
+
+    <!-- Error messages -->
     <mat-error
       style="margin-top: 20px"
       *ngIf="errorMessage"
